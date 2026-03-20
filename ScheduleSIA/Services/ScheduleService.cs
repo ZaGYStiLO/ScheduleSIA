@@ -26,6 +26,21 @@ namespace ScheduleSIA.Services
             return BuildScheduleDto(startDate, endDate, schedules);
         }
 
+        public async Task<List<StudentGroupDto>> GetAllGroups()
+        {
+            return await _db.StudentGroups
+                .AsNoTracking()
+                .Include(g => g.Specialty)
+                .OrderBy(g => g.GroupName)
+                .Select(g => new StudentGroupDto
+                {
+
+                    GroupName = g.GroupName,
+                })
+                .ToListAsync();
+        }
+
+
         private static void ValidateDates(DateTime start, DateTime end)
         {
             if (start > end)

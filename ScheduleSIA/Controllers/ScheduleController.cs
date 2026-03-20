@@ -21,5 +21,12 @@ namespace ScheduleSIA.Controllers
             var result = await _service.GetScheduleForGroup(grounName, start.Date, end.Date);
             return Ok(result);
         }
+
+        [HttpGet("groups")]
+        public async Task<IActionResult> GetGroups()
+        {
+            var result = await _service.GetAllGroups();
+            return Ok(result);
+        }
     }
 }
