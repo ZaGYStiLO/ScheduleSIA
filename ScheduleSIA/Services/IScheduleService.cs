@@ -7,7 +7,8 @@ namespace ScheduleSIA.Services
         Task<List<ScheduleByDateDto>> GetScheduleForGroup(string groupName, DateTime
 startDate, DateTime endDate);
 
-        Task<List<StudentGroupDto>> GetAllGroups();
+        Task<List<string>> GetAllGroups();
+
     }
 
 }
